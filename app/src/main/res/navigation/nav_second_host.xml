@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host"
+    app:startDestination="@id/hostFragment">
+
+    <fragment
+        android:id="@+id/hostFragment"
+        android:name="com.interneted.test_navigation.fragment.HostFragment"
+        android:label="HostFragment"
+        tools:layout="@layout/fragment_host">
+        <action
+            android:id="@+id/action_hostFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.interneted.test_navigation.fragment.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_hostFragment2"
+            app:destination="@id/hostFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/hostFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/otherHostFragment"
+        android:name="com.interneted.test_navigation.fragment.OtherHostFragment"
+        android:label="OtherHostFragment"
+        tools:layout="@layout/fragment_other_host">
+        <action
+            android:id="@+id/action_otherHostFragment_to_hostFragment"
+            app:destination="@id/hostFragment" />
+    </fragment>
+</navigation>
