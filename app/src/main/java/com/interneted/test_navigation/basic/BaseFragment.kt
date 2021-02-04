@@ -37,14 +37,14 @@ abstract class BaseFragment<VB : ViewDataBinding> : Fragment() {
         return viewDataBinding.root
     }
 
-
-    override fun onResume() {
-        super.onResume()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         if (!isLoaded && !isHidden) {
             isLoaded = true
             lazyInit()
         }
     }
+
 
     /**
      * 懶加載：初始化

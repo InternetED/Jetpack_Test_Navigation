@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondActivity">
+    tools:context=".ui.second.SecondActivity">
 
         <fragment
             android:id="@+id/nav_host_fragment"
             android:name="com.interneted.test_navigation.basic.WindowNavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_second_host"/>
+            app:defaultNavHost="true"/>
 
 
 

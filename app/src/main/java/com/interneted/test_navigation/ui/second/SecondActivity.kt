@@ -1,12 +1,13 @@
-package com.interneted.test_navigation
+package com.interneted.test_navigation.ui.second
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavOptions
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
+import com.interneted.test_navigation.R
+
 
 /**
  * Creator: ED
@@ -30,6 +31,26 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
 
+        supportFragmentManager.registerFragmentLifecycleCallbacks(object :
+            FragmentManager.FragmentLifecycleCallbacks() {
+
+            private val TAG = "SecondLifecycleCallback"
+
+            override fun onFragmentCreated(
+                fm: FragmentManager,
+                f: Fragment,
+                savedInstanceState: Bundle?
+            ) {
+                super.onFragmentCreated(fm, f, savedInstanceState)
+                Log.d(TAG, "onFragmentCreated:$f")
+            }
+
+            override fun onFragmentDestroyed(fm: FragmentManager, f: Fragment) {
+                super.onFragmentDestroyed(fm, f)
+                Log.d(TAG, "onFragmentDestroyed:$f")
+            }
+        }, true)
+
 
         val navController =
             Navigation.findNavController(this, R.id.nav_host_fragment)
@@ -43,10 +64,10 @@ class SecondActivity : AppCompatActivity() {
                 else -> throw IllegalAccessError("")
             }
 
-        navController.navigate(
-            startDestination, null, NavOptions.Builder()
-                .setPopUpTo(R.id.hostFragment, true).build()
-        )
+        val navGraph = navController.navInflater.inflate(R.navigation.nav_second_host)
+        navGraph.startDestination = startDestination
+
+        navController.graph = navGraph
 
 
     }

@@ -5,32 +5,31 @@
     android:id="@+id/nav_host"
     app:startDestination="@id/hostFragment">
 
-    <fragment
+    <fixFragment
         android:id="@+id/hostFragment"
-        android:name="com.interneted.test_navigation.fragment.HostFragment"
+        android:name="com.interneted.test_navigation.ui.second.host.HostFragment"
         android:label="HostFragment"
         tools:layout="@layout/fragment_host">
         <action
             android:id="@+id/action_hostFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
-    </fragment>
-    <fragment
+            app:destination="@id/detailFragment"
+            app:popUpToInclusive="false" />
+    </fixFragment>
+    <fixFragment
         android:id="@+id/detailFragment"
-        android:name="com.interneted.test_navigation.fragment.DetailFragment"
+        android:name="com.interneted.test_navigation.ui.second.detail.DetailFragment"
         android:label="DetailFragment"
         tools:layout="@layout/fragment_detail" >
         <action
             android:id="@+id/action_detailFragment_to_hostFragment2"
-            app:destination="@id/hostFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/hostFragment"
-            app:popUpToInclusive="false" />
-    </fragment>
+            app:destination="@id/hostFragment" >
+        </action>
+    </fixFragment>
 
 
     <fragment
         android:id="@+id/otherHostFragment"
-        android:name="com.interneted.test_navigation.fragment.OtherHostFragment"
+        android:name="com.interneted.test_navigation.ui.second.otherhost.OtherHostFragment"
         android:label="OtherHostFragment"
         tools:layout="@layout/fragment_other_host">
         <action

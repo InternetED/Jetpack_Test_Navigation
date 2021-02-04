@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import com.interneted.test_navigation.helper.FixFragmentNavigator
 
 /**
  * Creator: ED
@@ -24,6 +26,13 @@ class WindowNavHostFragment : NavHostFragment() {
         val frameLayout = WindowFrameLayout(inflater.context)
         frameLayout.id = id
         return frameLayout
+    }
+
+    override fun onCreateNavController(navController: NavController) {
+        super.onCreateNavController(navController)
+
+        val fixFragmentNavigator = FixFragmentNavigator(requireContext(), childFragmentManager, id)
+        navController.navigatorProvider.addNavigator(fixFragmentNavigator)
     }
 
 }
